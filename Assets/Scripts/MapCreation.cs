@@ -42,28 +42,28 @@ public class MapCreation : MonoBehaviour
     public void Awake()
     {
         //实例化老家
-        CreateItem(item[0], new Vector3(-4.5f, -9.5f, 0), Quaternion.identity);
+        CreateItem(item[0], new Vector3(-5.25f, -9.5f, 0), Quaternion.identity);
 
         //实例化空气墙
-        CreateItem(item[9], new Vector3(0, 10.5f, 0), Quaternion.identity);
-        CreateItem(item[10], new Vector3(-17.5f, 0, 0), Quaternion.identity);
-        CreateItem(item[11], new Vector3(10.5f, 0, 0), Quaternion.identity);
-        CreateItem(item[12], new Vector3(0, -10.5f, 0), Quaternion.identity);
+        CreateItem(item[9], new Vector3(-0.75f, 10.5f, 0), Quaternion.identity);
+        CreateItem(item[10], new Vector3(-18.25f, 0, 0), Quaternion.identity);
+        CreateItem(item[11], new Vector3(9.75f, 0, 0), Quaternion.identity);
+        CreateItem(item[12], new Vector3(-0.75f, -10.5f, 0), Quaternion.identity);
 
         //实例化我方出生点
-        CreateItem(item[3], new Vector3(-6.5f, -9.5f, 0), Quaternion.identity);
+        CreateItem(item[3], new Vector3(-7.25f, -9.5f, 0), Quaternion.identity);
 
         //实例化敌方出生点
-        CreateItem(item[6], new Vector3(-16.5f, 9.5f, 0), Quaternion.identity);
-        CreateItem(item[7], new Vector3(-4.5f, 9.5f, 0), Quaternion.identity);
-        CreateItem(item[8], new Vector3(9.5f, 9.5f, 0), Quaternion.identity);
+        CreateItem(item[6], new Vector3(-17.25f, 9.5f, 0), Quaternion.identity);
+        CreateItem(item[7], new Vector3(-5.25f, 9.5f, 0), Quaternion.identity);
+        CreateItem(item[8], new Vector3(8.75f, 9.5f, 0), Quaternion.identity);
 
         //实例化老家围墙
-        CreateItem(item[1], new Vector3(-3.5f, -9.5f, 0), Quaternion.identity);
-        CreateItem(item[1], new Vector3(-5.5f, -9.5f, 0), Quaternion.identity);
-        CreateItem(item[1], new Vector3(-4.5f, -8.5f, 0), Quaternion.identity);
-        CreateItem(item[1], new Vector3(-3.5f, -8.5f, 0), Quaternion.identity);
-        CreateItem(item[1], new Vector3(-5.5f, -8.5f, 0), Quaternion.identity);
+        CreateItem(item[1], new Vector3(-4.25f, -9.5f, 0), Quaternion.identity);
+        CreateItem(item[1], new Vector3(-6.25f, -9.5f, 0), Quaternion.identity);
+        CreateItem(item[1], new Vector3(-5.25f, -8.5f, 0), Quaternion.identity);
+        CreateItem(item[1], new Vector3(-4.25f, -8.5f, 0), Quaternion.identity);
+        CreateItem(item[1], new Vector3(-6.25f, -8.5f, 0), Quaternion.identity);
 
         CreateGamelevels(array001);
 
@@ -85,7 +85,7 @@ public class MapCreation : MonoBehaviour
             for (int j = 0; j < Gamelevels.GetLength(1); j++)
             {
                 int sum = Gamelevels[i, j];
-                float x = (j * 1 + (-16.5f));
+                float x = (j * 1 + (-17.25f));
                 float y = ((9.5f) - (i * 1));
                 float z = 0;
 
