@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMananger : MonoBehaviour
 {
     //属性值
+    public int EnemyCount = 20;
     public int LifeValue = 3;
     public int PlayerScore = 0;
     public bool IsDead = false;
     public bool IsDefeat = false;
 
-
+    //引用
     public GameObject born;
+    public Text enemyCountText;
+    public Text playerScoreText;
+    public Text playerLifeCountText;
+    public GameObject backGroundUI;
+    public GameObject isDefeatUI;
 
     //单例
     private static PlayerMananger instance;
@@ -30,7 +37,7 @@ public class PlayerMananger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isDefeatUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,18 +47,24 @@ public class PlayerMananger : MonoBehaviour
         {
             Recover();
         }
+        enemyCountText.text = EnemyCount.ToString();
+        playerScoreText.text = PlayerScore.ToString();
+        playerLifeCountText.text = LifeValue.ToString();
     }
 
     private void Recover() 
     {
         if (LifeValue<=0)
         {
+            //游戏失败,GameOver
+            
+            isDefeatUI.SetActive(true);
             //游戏失败,返回主界面
         }
         else
         {
             LifeValue--;
-            GameObject go = Instantiate(born, new Vector3(-6.5f, -9.5f, 0), Quaternion.identity);
+            GameObject go = Instantiate(born, new Vector3(-7.25f, -9.5f, 0), Quaternion.identity);
             go.GetComponent<Born>().createPlayer = true;
             IsDead = false;
         }
