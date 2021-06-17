@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMananger : MonoBehaviour
@@ -66,7 +67,7 @@ public class PlayerMananger : MonoBehaviour
             //游戏失败,GameOver
             Invoke("ActiveDefeatUI",1.5f);
             //游戏失败,返回主界面
-
+            Invoke("ReturnToMainMenu", 3);
         }
         else
         {
@@ -80,9 +81,16 @@ public class PlayerMananger : MonoBehaviour
     /// <summary>
     /// 激活隐藏UI(GameOver)
     /// </summary>
-    private void ActiveDefeatUI() {
+    private void ActiveDefeatUI() 
+    {
 
         isDefeatUI.SetActive(true);
 
+    }
+
+    private void ReturnToMainMenu() 
+    {
+
+        SceneManager.LoadScene("GameState");
     }
 }

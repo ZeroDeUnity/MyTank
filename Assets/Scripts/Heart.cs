@@ -21,7 +21,8 @@ public class Heart : MonoBehaviour
         
     }
 
-    public void Die() {
+    public void Die() 
+    {
         sr.sprite = BrokenSprite;
         Instantiate(explosionPrefab, transform.position, transform.rotation);
         PlayerMananger.Instance.IsDefeat = true;

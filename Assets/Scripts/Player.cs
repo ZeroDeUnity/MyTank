@@ -68,7 +68,8 @@ public class Player : MonoBehaviour
     }
 
     //坦克的攻击方法
-    private void Attack() {
+    private void Attack() 
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //子弹产生的角度:当前坦克的角度+子弹应该旋转的角度
@@ -78,7 +79,8 @@ public class Player : MonoBehaviour
     }
 
     //坦克的移动方法
-    private void Move() {
+    private void Move() 
+    {
         float v = Input.GetAxisRaw("Vertical");
 
         float h = Input.GetAxisRaw("Horizontal");
@@ -183,7 +185,8 @@ public class Player : MonoBehaviour
     }
 
     //坦克的死亡方法
-    public void Die() {
+    public void Die() 
+    {
         if (isDefended)
         {
             return;

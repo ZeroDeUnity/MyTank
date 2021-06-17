@@ -23,7 +23,8 @@ public class Born : MonoBehaviour
         
     }
 
-    private void BornTank() {
+    private void BornTank() 
+    {
         if (createPlayer)
         {
             Instantiate(playerPrefab, transform.position, Quaternion.identity);

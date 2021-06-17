@@ -14,7 +14,8 @@ public class MapCreation : MonoBehaviour
 
 
     //关卡1
-    public int[,] array001 = new int[20, 27] {
+    public int[,] array001 = new int[20, 27] 
+    {
         {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0},
         {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1},
         {0,1,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0},
@@ -78,7 +79,8 @@ public class MapCreation : MonoBehaviour
 
     }
 
-    private void CreateGamelevels(int[,] Gamelevels) {
+    private void CreateGamelevels(int[,] Gamelevels) 
+    {
 
         for (int i = 0; i < (Gamelevels.GetLength(0)); i++){
 
