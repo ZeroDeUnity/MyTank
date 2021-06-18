@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class PlayerMananger : MonoBehaviour
 {
     //属性值
-    public int EnemyCount = 20;
     public int LifeValue = 3;
     public int PlayerScore = 0;
     public bool IsDead = false;
@@ -15,7 +14,6 @@ public class PlayerMananger : MonoBehaviour
 
     //引用
     public GameObject born;
-    public Text enemyCountText;
     public Text playerScoreText;
     public Text playerLifeCountText;
     public GameObject backGroundUI;
@@ -52,7 +50,7 @@ public class PlayerMananger : MonoBehaviour
         {
             Recover();
         }
-        enemyCountText.text = EnemyCount.ToString();
+
         playerScoreText.text = PlayerScore.ToString();
         playerLifeCountText.text = LifeValue.ToString();
     }
