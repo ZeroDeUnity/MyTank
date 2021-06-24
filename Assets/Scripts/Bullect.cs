@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Bullect : MonoBehaviour
 {
+    /// <summary>
+    /// 子弹移动速度
+    /// </summary>
     public float MoveSpeed = 10;
 
-
+    /// <summary>
+    /// 是否是玩家子弹
+    /// </summary>
     public bool isPlayerBullect = false;
-
-    private bool markbool = true;
 
 
     // Start is called before the first frame update
@@ -29,9 +32,8 @@ public class Bullect : MonoBehaviour
         switch (collision.tag)
         {
             case "Tank":
-                if (!isPlayerBullect && markbool)
+                if (!isPlayerBullect)
                 {
-                    markbool = false;
                     collision.SendMessage("Die");
                     Destroy(gameObject);
                 }
@@ -42,9 +44,8 @@ public class Bullect : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Enemy":
-                if (isPlayerBullect&& markbool)
+                if (isPlayerBullect)
                 {
-                    markbool = false;
                     Destroy(gameObject);
                     collision.SendMessage("Die");
                     

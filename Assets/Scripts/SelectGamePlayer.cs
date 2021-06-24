@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SelectGamePlayer : MonoBehaviour
 {
+    /// <summary>
+    /// 选择的游玩模式
+    /// </summary>
     public int SelectPlayerValue;
 
-
+    /// <summary>
+    /// P1选择器
+    /// </summary>
     public GameObject select_Player;
+    /// <summary>
+    /// P2选择器
+    /// </summary>
     public GameObject select_Players;
 
     //单例
@@ -52,6 +60,9 @@ public class SelectGamePlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 选择游戏模式
+    /// </summary>
     public void SelectPlayer()
     {
         float v = Input.GetAxisRaw("Vertical");
@@ -73,6 +84,9 @@ public class SelectGamePlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 游戏开始
+    /// </summary>
     public void GameStart()
     {
         SceneManager.LoadScene("Game");

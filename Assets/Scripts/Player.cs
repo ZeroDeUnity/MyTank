@@ -3,20 +3,52 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// 坦克移动速度
+    /// </summary>
     public float MoveSpeed = 20;
+    /// <summary>
+    /// 子弹角度
+    /// </summary>
     private Vector3 bullectAulerAngles;
+    /// <summary>
+    /// 攻击cd
+    /// </summary>
     private float timeVal;
+    /// <summary>
+    /// 无敌时间
+    /// </summary>
     private float defendTimeVal=3;
+    /// <summary>
+    /// 是否处于无敌状态
+    /// </summary>
     private bool isDefended=true;
 
+    /// <summary>
+    /// 自身SpriteRenderer
+    /// </summary>
     private SpriteRenderer sr;
+    /// <summary>
+    /// SpriteList,存放不同方向下的坦克Sprite
+    /// </summary>
     public Sprite[] TankSprite;//上 右 下 左
+    /// <summary>
+    /// 子弹预制体
+    /// </summary>
     public GameObject bullectPrefab;
+    /// <summary>
+    /// 爆炸效果预制体
+    /// </summary>
     public GameObject explosionPrefab;
+    /// <summary>
+    /// 无敌效果预制体
+    /// </summary>
     public GameObject defendEffectPrefab;
+    /// <summary>
+    /// 坦克最终前进方向标识
+    /// </summary>
     public string fx1 = "";
 
-    private List<string> fxlist = new List<string>();
 
     private void Awake()
     {
@@ -67,7 +99,9 @@ public class Player : MonoBehaviour
 
     }
 
-    //坦克的攻击方法
+    /// <summary>
+    /// 坦克的攻击方法
+    /// </summary>
     private void Attack() 
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -78,7 +112,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    //坦克的移动方法
+    /// <summary>
+    /// 坦克的移动方法
+    /// </summary>
     private void Move() 
     {
         float v = Input.GetAxisRaw("Vertical");
@@ -184,7 +220,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    //坦克的死亡方法
+    /// <summary>
+    /// 坦克的死亡方法
+    /// </summary>
     public void Die() 
     {
         if (isDefended)

@@ -13,7 +13,9 @@ public class MapCreation : MonoBehaviour
     public GameObject[] item;
 
 
-    //关卡1
+    /// <summary>
+    /// 关卡1
+    /// </summary>
     public int[,] array001 = new int[20, 27] 
     {
         {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0},
@@ -71,6 +73,12 @@ public class MapCreation : MonoBehaviour
         //print(asdsa);
     }
 
+    /// <summary>
+    /// 实例化对象
+    /// </summary>
+    /// <param name="CreateGameObject"></param>
+    /// <param name="CreatePosion"></param>
+    /// <param name="CreateRotaion"></param>
     private void CreateItem(GameObject CreateGameObject, Vector3 CreatePosion, Quaternion CreateRotaion)
     {
 
@@ -79,6 +87,10 @@ public class MapCreation : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 生成游戏关卡
+    /// </summary>
+    /// <param name="Gamelevels"></param>
     private void CreateGamelevels(int[,] Gamelevels) 
     {
 

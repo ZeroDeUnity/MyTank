@@ -7,16 +7,43 @@ using UnityEngine.UI;
 public class PlayerMananger : MonoBehaviour
 {
     //属性值
+    /// <summary>
+    /// 玩家命数
+    /// </summary>
     public int LifeValue = 3;
+    /// <summary>
+    /// 玩家得分
+    /// </summary>
     public int PlayerScore = 0;
+    /// <summary>
+    /// 是否死亡
+    /// </summary>
     public bool IsDead = false;
+    /// <summary>
+    /// 是否失败
+    /// </summary>
     public bool IsDefeat = false;
 
     //引用
+    /// <summary>
+    /// 出生点
+    /// </summary>
     public GameObject born;
+    /// <summary>
+    /// 游戏分数文本对象
+    /// </summary>
     public Text playerScoreText;
+    /// <summary>
+    /// 玩家命数文本对象
+    /// </summary>
     public Text playerLifeCountText;
+    /// <summary>
+    /// 黑背景UI
+    /// </summary>
     public GameObject backGroundUI;
+    /// <summary>
+    /// 是否失败UI
+    /// </summary>
     public GameObject isDefeatUI;
 
     //单例

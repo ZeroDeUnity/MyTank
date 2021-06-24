@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class Born : MonoBehaviour
 {
+    /// <summary>
+    /// 玩家预制体
+    /// </summary>
     public GameObject playerPrefab;
 
+    /// <summary>
+    /// 敌人预制体List
+    /// </summary>
     public GameObject[] enemyPrefabList;
 
+    /// <summary>
+    /// 是否创建玩家
+    /// </summary>
     public bool createPlayer;
 
     // Start is called before the first frame update
@@ -23,6 +32,9 @@ public class Born : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 生成坦克
+    /// </summary>
     private void BornTank() 
     {
         if (createPlayer)
