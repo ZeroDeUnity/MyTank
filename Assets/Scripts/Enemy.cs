@@ -32,6 +32,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public Sprite[] TankSprite;//上 右 下 左
     /// <summary>
+    /// 敌人动画预制体
+    /// </summary>
+    public GameObject EnemyAnimationPrefab;
+    /// <summary>
     /// 子弹预制体
     /// </summary>
     public GameObject bullectPrefab;
@@ -143,6 +147,7 @@ public class Enemy : MonoBehaviour
 
         if (v == 0 && h == 0)
         {
+            EnemyAnimationPrefab.SetActive(false);
             fx1 = "";
         }
 
@@ -188,6 +193,7 @@ public class Enemy : MonoBehaviour
             }
             else if (v > 0)
             {
+                EnemyAnimationPrefab.SetActive(true);
                 sr.sprite = TankSprite[0];
                 bullectAulerAngles = new Vector3(0, 0, 0);
             }
