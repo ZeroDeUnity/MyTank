@@ -4,6 +4,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     /// <summary>
+    /// 玩家1的动画控制器
+    /// </summary>
+    public Animator Player_1_Animator;
+    /// <summary>
     /// 坦克移动速度
     /// </summary>
     public float MoveSpeed = 20;
@@ -25,7 +29,7 @@ public class Player : MonoBehaviour
     private bool isDefended=true;
 
     /// <summary>
-    /// 自身SpriteRenderer
+    /// 自身SpriteRenderer(通过改变材质精灵来实现改变坦克朝向,已废弃,采用动画的方式进行转向处理)
     /// </summary>
     private SpriteRenderer sr;
     /// <summary>
@@ -47,8 +51,19 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 坦克最终前进方向标识
     /// </summary>
-    public string fx1 = "";
-
+    private string fx1 = "";
+    /// <summary>
+    /// 动画控制属性:是否待机
+    /// </summary>
+    private bool IsIdle = true;
+    /// <summary>
+    /// 动画控制属性:纵向速度(大于0向上运动,小于0向下运动)
+    /// </summary>
+    private float VerticalSpeed = 0;
+    /// <summary>
+    /// 动画控制属性:横向速度(大于0向右运动,小于0向左运动)
+    /// </summary>
+    private float HonzontalSpeed = 0;
 
     private void Awake()
     {
@@ -57,6 +72,10 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
+        Player_1_Animator.SetBool("IsIdle", IsIdle);
+        Player_1_Animator.SetFloat("VerticalSpeed", VerticalSpeed);
+        Player_1_Animator.SetFloat("HonzontalSpeed", HonzontalSpeed);
+
         //是否处于无敌状态
         if (isDefended)
         {
@@ -154,6 +173,7 @@ public class Player : MonoBehaviour
 
         if (v == 0 && h == 0)
         {
+            //IsIdle = true;
             fx1 = "";
         }
 
@@ -165,12 +185,18 @@ public class Player : MonoBehaviour
                     transform.Translate(Vector3.right * h * MoveSpeed * Time.fixedDeltaTime, Space.World);
                     if (h < 0)
                     {
-                        sr.sprite = TankSprite[3];
+                        IsIdle = false;
+                        HonzontalSpeed = -1;
+                        VerticalSpeed = 0;
+                        //sr.sprite = TankSprite[3];
                         bullectAulerAngles = new Vector3(0, 0, 90);
                     }
                     else if (h > 0)
                     {
-                        sr.sprite = TankSprite[1];
+                        IsIdle = false;
+                        HonzontalSpeed = 1;
+                        VerticalSpeed = 0;
+                        //sr.sprite = TankSprite[1];
                         bullectAulerAngles = new Vector3(0, 0, -90);
                     }
                     break;
@@ -178,12 +204,18 @@ public class Player : MonoBehaviour
                     transform.Translate(Vector3.up * v * MoveSpeed * Time.fixedDeltaTime, Space.World);
                     if (v < 0)
                     {
-                        sr.sprite = TankSprite[2];
+                        IsIdle = false;
+                        VerticalSpeed = -1;
+                        HonzontalSpeed = 0;
+                        //sr.sprite = TankSprite[2];
                         bullectAulerAngles = new Vector3(0, 0, -180);
                     }
                     else if (v > 0)
                     {
-                        sr.sprite = TankSprite[0];
+                        IsIdle = false;
+                        VerticalSpeed = 1;
+                        HonzontalSpeed = 0;
+                        //sr.sprite = TankSprite[0];
                         bullectAulerAngles = new Vector3(0, 0,0);
                     }
                     break;
@@ -194,12 +226,18 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.up * v * MoveSpeed * Time.fixedDeltaTime, Space.World);
             if (v < 0)
             {
-                sr.sprite = TankSprite[2];
+                IsIdle = false;
+                VerticalSpeed = -1;
+                HonzontalSpeed = 0;
+                //sr.sprite = TankSprite[2];
                 bullectAulerAngles = new Vector3(0, 0, -180);
             }
             else if (v > 0)
             {
-                sr.sprite = TankSprite[0];
+                IsIdle = false;
+                VerticalSpeed = 1;
+                HonzontalSpeed = 0;
+                //sr.sprite = TankSprite[0];
                 bullectAulerAngles = new Vector3(0, 0, 0);
             }
         }
@@ -208,12 +246,18 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.right * h * MoveSpeed * Time.fixedDeltaTime, Space.World);
             if (h < 0)
             {
-                sr.sprite = TankSprite[3];
+                IsIdle = false;
+                HonzontalSpeed = -1;
+                VerticalSpeed = 0;
+                //sr.sprite = TankSprite[3];
                 bullectAulerAngles = new Vector3(0, 0, 90);
             }
             else if (h > 0)
             {
-                sr.sprite = TankSprite[1];
+                IsIdle = false;
+                HonzontalSpeed = 1;
+                VerticalSpeed = 0;
+                //sr.sprite = TankSprite[1];
                 bullectAulerAngles = new Vector3(0, 0, -90);
             }
 
