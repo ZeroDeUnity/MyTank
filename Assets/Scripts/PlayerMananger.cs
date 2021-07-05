@@ -8,6 +8,10 @@ public class PlayerMananger : MonoBehaviour
 {
     //属性值
     /// <summary>
+    /// 关卡数
+    /// </summary>
+    public int GateNumber = 1;
+    /// <summary>
     /// 玩家命数
     /// </summary>
     public int LifeValue = 3;

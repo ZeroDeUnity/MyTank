@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
@@ -7,62 +8,23 @@ public class MapDataMananger : MonoBehaviour
 {
     List<ArrayList> MapDataList = new List<ArrayList>();
 
+    private void Awake()
+    {
+        ExcelTool.CreateItemArrayWithExcel("MapConfigData", 1);
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        ArrayList MapData = new ArrayList();
-        int[,] Maparray = new int[20, 27]
-        {
-        {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0},
-        {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1},
-        {0,1,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0},
-        {0,1,0,0,0,0,4,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,1,0,0},
-        {0,0,0,0,0,0,4,0,0,0,0,0,1,0,1,0,1,1,1,1,1,0,0,1,0,0,1},
-        {0,0,0,0,4,4,4,4,4,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0},
-        {0,0,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0},
-        {0,0,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0},
-        {0,0,4,4,4,4,4,4,4,4,4,0,0,0,1,0,0,0,1,0,0,0,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,5,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0},
-        {0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0},
-        {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0},
-        {2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,2},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-
-        };
-        string MapEnemyJson = "{}";
-        MapData.Add(Maparray);
-        MapDataList.Add(MapData);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    public DataTable CreateMapEnemyDT() {
-
-        int Enemy001 = 0;
-        int Enemy002 = 0;
-        int Enemy003 = 0;
-        int Enemy004 = 0;
-        int Enemy005 = 0;
-        int Enemy006 = 0;
-        int Enemy007 = 0;
-        int Enemy008 = 0;
-
-
-        DataTable MapEnemyDT = new DataTable();
-        MapEnemyDT.Rows.Add("EnemyCount");
-        MapEnemyDT.Rows.Add("EnemyType");
-
-
-        return null;
-    }
 }
