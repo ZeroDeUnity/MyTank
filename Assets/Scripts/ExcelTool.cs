@@ -21,53 +21,68 @@ namespace Assets.Scripts
         /// <returns>Item数组</returns>
         public static DataTable CreateItemArrayWithExcel(String GetType,int GateNumber)
         {
+            DataTable gateDT = new DataTable();
+
             string FilePath = Application.dataPath + "/ExcelData/" + "MapData.xlsx";
             //获得表数据
             int columnNum = 0, rowNum = 0;
             DataRowCollection collect = ReadExcel(FilePath, ref columnNum, ref rowNum);
 
-            DataTable GateDT = new DataTable();
 
             if (GetType == "MapData")
             {
                 //根据excel的定义，第二行开始才是数据
-/*                for (int i = 1; i < rowNum; i++)
+
+                int counts = (GateNumber - 1) * 21 + 2;
+                int rowCount = 20;
+                int columnCount = 27;
+
+                if (collect[counts][1] == null)
                 {
-                    dt.Columns.Add("");
-                    dt.Columns.Add("");
-                    dt.Columns.Add("");
-                    Item item = new Item();
-                    //解析每列的数据
-                    item.itemId = uint.Parse(collect[i][0].ToString());
-                    item.itemName = collect[i][1].ToString();
-                    item.itemPrice = uint.Parse(collect[i][2].ToString());
-                    array[i - 1] = item;
-                }*/
+                    //关卡信息不存在
+                    return null;
+                }
+
+                for (int i = 0; i < columnCount; i++)
+                {
+                    gateDT.Columns.Add(""+i+"");
+                }
+
+                for (int i = 0; i < rowCount; i++)
+                {
+                    int rowNum_Now = counts + i;
+
+                    DataRow gateDR = gateDT.NewRow();
+
+                    for (int j = 0; j < columnCount; j++)
+                    {
+                        gateDR[j] = collect[rowNum_Now][j];
+                    }
+                    
+                    gateDT.Rows.Add(gateDR);
+                }
+
             }
             else if(GetType == "MapConfigData") {
-                GateDT.Columns.Add("MapNumber");
-                GateDT.Columns.Add("EnemyCount");
-                GateDT.Columns.Add("EnemyType");
-                DataRow row = GateDT.NewRow();
-                GateDT.Rows.Add(GateNumber, collect[1][1].ToString(), collect[1][2].ToString());
-
-
+                //返回关卡配置信息
                 //根据excel的定义，第二行开始才是数据
-                /*                for (int i = 1; i < rowNum; i++)
-                                {
-                                    dt.Columns.Add("");
-                                    dt.Columns.Add("");
-                                    dt.Columns.Add("");
-                                    Item item = new Item();
-                                    //解析每列的数据
-                                    item.itemId = uint.Parse(collect[i][0].ToString());
-                                    item.itemName = collect[i][1].ToString();
-                                    item.itemPrice = uint.Parse(collect[i][2].ToString());
-                                    array[i - 1] = item;
-                                }*/
+
+                int counts = (GateNumber - 1) * 21 + 1;
+
+                if (collect[counts][1]==null)
+                {
+                    //关卡信息不存在
+                    return null;
+                }
+
+                gateDT.Columns.Add("MapNumber");
+                gateDT.Columns.Add("EnemyCount");
+                gateDT.Columns.Add("EnemyType");
+                DataRow row = gateDT.NewRow();
+                gateDT.Rows.Add(GateNumber, collect[counts][1].ToString(), collect[counts][2].ToString());
             }
 
-            return GateDT;
+            return gateDT;
         }
 
         /// <summary>

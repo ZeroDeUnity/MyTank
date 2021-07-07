@@ -10,7 +10,8 @@ public class MapDataMananger : MonoBehaviour
 
     private void Awake()
     {
-        ExcelTool.CreateItemArrayWithExcel("MapConfigData", 1);
+        ExcelTool.CreateItemArrayWithExcel("MapData", 1);
+        //ExcelTool.CreateItemArrayWithExcel("MapConfigData", 1);
     }
 
 
