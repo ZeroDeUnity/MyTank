@@ -6,12 +6,36 @@ using UnityEngine;
 
 public class MapDataMananger : MonoBehaviour
 {
-    List<ArrayList> MapDataList = new List<ArrayList>();
+    /// <summary>
+    /// 关卡数
+    /// </summary>
+    public int GateNumber = 1;
+
+    /// <summary>
+    /// 地图数据DataTable
+    /// </summary>
+    public DataTable MapDataDT = new DataTable();
+
+    /// <summary>
+    /// 地图敌人配置数据DataTable
+    /// </summary>
+    public DataTable MapEnemyConfigDataDT = new DataTable();
+
+    //单例
+    public static MapDataMananger instance;
+
+    public static MapDataMananger Instance {
+        get => instance;
+        set => instance = value;
+    }
+
 
     private void Awake()
     {
-        ExcelTool.CreateItemArrayWithExcel("MapData", 1);
-        //ExcelTool.CreateItemArrayWithExcel("MapConfigData", 1);
+        instance = this;
+        MapDataDT = ExcelTool.CreateItemArrayWithExcel("MapData", GateNumber);
+        MapEnemyConfigDataDT = ExcelTool.CreateItemArrayWithExcel("MapConfigData", GateNumber);
+        print("取数据");
     }
 
 

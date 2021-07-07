@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class MapCreation : MonoBehaviour
@@ -12,38 +14,24 @@ public class MapCreation : MonoBehaviour
     /// </summary>
     public GameObject[] item;
 
+/*    /// <summary>
+    /// 地图数据DataTable
+    /// </summary>
+    public DataTable MapDataDT = new DataTable();
 
     /// <summary>
-    /// 关卡1
+    /// 地图敌人配置数据DataTable
     /// </summary>
-    public int[,] array001 = new int[20, 27] 
-    {
-        {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0},
-        {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1},
-        {0,1,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0},
-        {0,1,0,0,0,0,4,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,1,0,0},
-        {0,0,0,0,0,0,4,0,0,0,0,0,1,0,1,0,1,1,1,1,1,0,0,1,0,0,1},
-        {0,0,0,0,4,4,4,4,4,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0},
-        {0,0,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0},
-        {0,0,0,0,0,0,4,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0},
-        {0,0,4,4,4,4,4,4,4,4,4,0,0,0,1,0,0,0,1,0,0,0,1,1,1,1,1},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,5,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0},
-        {0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0},
-        {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0},
-        {2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,2},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    public DataTable MapEnemyConfigDataDT = new DataTable();*/
 
-    };
+
 
 
     public void Awake()
     {
+/*        MapDataDT = ExcelTool.CreateItemArrayWithExcel("MapData", GateNumber);
+        MapEnemyConfigDataDT = ExcelTool.CreateItemArrayWithExcel("MapConfigData", GateNumber);*/
+
         //实例化老家
         CreateItem(item[0], new Vector3(-5.25f, -9.5f, 0), Quaternion.identity);
 
@@ -68,7 +56,7 @@ public class MapCreation : MonoBehaviour
         CreateItem(item[1], new Vector3(-4.25f, -8.5f, 0), Quaternion.identity);
         CreateItem(item[1], new Vector3(-6.25f, -8.5f, 0), Quaternion.identity);
 
-        CreateGamelevels(array001);
+        CreateGamelevels();
 
         //print(asdsa);
     }
@@ -91,14 +79,16 @@ public class MapCreation : MonoBehaviour
     /// 生成游戏关卡
     /// </summary>
     /// <param name="Gamelevels"></param>
-    private void CreateGamelevels(int[,] Gamelevels) 
+    private void CreateGamelevels() 
     {
+        
+        DataTable MapDataDT = MapDataMananger.instance.MapDataDT;
 
-        for (int i = 0; i < (Gamelevels.GetLength(0)); i++){
-
-            for (int j = 0; j < Gamelevels.GetLength(1); j++)
+        for (int i = 0; i < MapDataDT.Rows.Count; i++)
+        {
+            for (int j = 0; j < MapDataDT.Columns.Count; j++)
             {
-                int sum = Gamelevels[i, j];
+                int sum = int.Parse(MapDataDT.Rows[i][j].ToString());
                 float x = (j * 1 + (-17.25f));
                 float y = ((9.5f) - (i * 1));
                 float z = 0;
@@ -116,7 +106,7 @@ public class MapCreation : MonoBehaviour
                     case 4:
                         //生成河流
                         CreateItem(item[4], new Vector3(x, y, z), Quaternion.identity);
-                            break;
+                        break;
                     case 5:
                         //生成草地
                         CreateItem(item[5], new Vector3(x, y, z), Quaternion.identity);
@@ -124,9 +114,9 @@ public class MapCreation : MonoBehaviour
                     default:
                         break;
                 }
-
             }
         }
+
     }
 
 }

@@ -1159,6 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecfa12cea3733e41ab9f35c5293d264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GateNumber: 1
 --- !u!4 &2005290229
 Transform:
   m_ObjectHideFlags: 0
@@ -1319,5 +1320,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7788988829155481392, guid: c05d6c7b036393f4b9e68542d6ff4619,
+        type: 3}
+      propertyPath: mapDataMananger
+      value: 
+      objectReference: {fileID: 2005290228}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c05d6c7b036393f4b9e68542d6ff4619, type: 3}
