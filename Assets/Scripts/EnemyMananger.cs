@@ -26,6 +26,7 @@ public class EnemyMananger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         EnemyCount = 200;
     }
 

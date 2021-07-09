@@ -40,7 +40,9 @@ namespace Assets.Scripts
                 if (collect[counts][1] == null)
                 {
                     //关卡信息不存在
-                    return null;
+                    //地图加载完,随机加载地图数据
+                    CreateItemArrayWithExcel(GetType, (GateNumber- UnityEngine.Random.Range(1, GateNumber)));
+                    //return null;
                 }
 
                 for (int i = 0; i < columnCount; i++)
@@ -72,7 +74,9 @@ namespace Assets.Scripts
                 if (collect[counts][1]==null)
                 {
                     //关卡信息不存在
-                    return null;
+                    //地图加载完,随机加载关卡信息
+                    CreateItemArrayWithExcel(GetType, (GateNumber - UnityEngine.Random.Range(1, GateNumber)));
+                    //return null;
                 }
 
                 gateDT.Columns.Add("MapNumber");

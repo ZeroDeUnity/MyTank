@@ -17,6 +17,11 @@ public class MapDataMananger : MonoBehaviour
     public DataTable MapDataDT = new DataTable();
 
     /// <summary>
+    /// 敌人数量
+    /// </summary>
+    public int EnemyCount = 0;
+
+    /// <summary>
     /// 地图敌人配置数据DataTable
     /// </summary>
     public DataTable MapEnemyConfigDataDT = new DataTable();
@@ -35,7 +40,6 @@ public class MapDataMananger : MonoBehaviour
         instance = this;
         MapDataDT = ExcelTool.CreateItemArrayWithExcel("MapData", GateNumber);
         MapEnemyConfigDataDT = ExcelTool.CreateItemArrayWithExcel("MapConfigData", GateNumber);
-        print("取数据");
     }
 
 
