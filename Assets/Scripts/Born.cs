@@ -29,23 +29,68 @@ public class Born : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /// <summary>
     /// 生成坦克
     /// </summary>
-    private void BornTank() 
+    private void BornTank()
     {
+
         if (createPlayer)
         {
             Instantiate(playerPrefab, transform.position, Quaternion.identity);
         }
         else
         {
-            int num = Random.Range(0, 2);
-            Instantiate(enemyPrefabList[num], transform.position, Quaternion.identity);
+            //获取敌人坦克数量
+            int EnemyCount = EnemyMananger.instance.EnemyCount;
+            //获取敌人坦克配置
+            Hashtable EnemyConfig = EnemyMananger.instance.EnemyConfig;
+
+            if (EnemyCount <= 0)
+            {
+                //剩余敌人数量为0
+                return;
+            }
+
+
+            for (int i = 0; i < EnemyConfig.Count; i++)
+            {
+                int num = Random.Range(0, EnemyConfig.Count) + 1;
+                string EnemyConfigKey = "Enemy00" + num + "";
+                int EnemyCount_Now = EnemyConfig[EnemyConfigKey] != null ? int.Parse(EnemyConfig[EnemyConfigKey].ToString()) : 0;
+
+                if (EnemyCount_Now <= 0)
+                {
+                    i = 0;
+                    EnemyConfig.Remove(EnemyConfigKey);
+                    if (EnemyConfig.Count <= 1)
+                    {
+                        if (EnemyCount>0)
+                        {
+
+                        }
+                        break;
+                    }
+                    continue;
+                }
+
+                EnemyConfig[EnemyConfigKey] = EnemyCount_Now - 1;
+
+                EnemyMananger.instance.EnemyConfig = EnemyConfig;
+
+                EnemyMananger.instance.EnemyCount = EnemyCount - 1;
+
+                Instantiate(enemyPrefabList[num - 1], transform.position, Quaternion.identity);
+
+                break;
+            }
+
+            //int num = Random.Range(0, 2);
+            //Instantiate(enemyPrefabList[num], transform.position, Quaternion.identity);
         }
-        
+
     }
 }
