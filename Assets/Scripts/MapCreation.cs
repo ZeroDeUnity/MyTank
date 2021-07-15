@@ -46,7 +46,7 @@ public class MapCreation : MonoBehaviour
 
         //实例化敌方出生点
         CreateItem(item[6], new Vector3(-17.25f, 9.5f, 0), Quaternion.identity);
-        CreateItem(item[7], new Vector3(-5.25f, 9.5f, 0), Quaternion.identity);
+        CreateItem(item[7], new Vector3(-4.25f, 9.5f, 0), Quaternion.identity);
         CreateItem(item[8], new Vector3(8.75f, 9.5f, 0), Quaternion.identity);
 
         //实例化老家围墙

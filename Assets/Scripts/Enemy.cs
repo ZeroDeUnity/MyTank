@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            timeVal += Time.deltaTime* Random.Range(0, 4);
+            timeVal += Time.deltaTime * Random.Range(0, 4);
         }
 
 
@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
         {
             transform.Translate(Vector3.right * h * MoveSpeed * Time.fixedDeltaTime, Space.World);
             if (h < 0)
-            {   
+            {
                 sr.sprite = TankSprite[3];
                 bullectAulerAngles = new Vector3(0, 0, 90);
             }
@@ -215,7 +215,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        
+
         //产生爆炸特效
         Instantiate(explosionPrefab, transform.position, transform.rotation);
         //死亡
@@ -223,6 +223,11 @@ public class Enemy : MonoBehaviour
         //得分增加
         print("得分+1");
         PlayerMananger.Instance.PlayerScore++;
+
+        if (EnemyMananger.instance.EnemyCount > 0)
+        {
+            EnemyMananger.instance.IsCreateEnemy = true;
+        }
 
     }
 
@@ -256,7 +261,7 @@ public class Enemy : MonoBehaviour
                 //河流
                 timeValChangeDirection = Random.Range(2, 4);
                 break;
-                
+
             default:
                 break;
         }

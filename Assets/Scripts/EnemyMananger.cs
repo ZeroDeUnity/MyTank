@@ -15,6 +15,14 @@ public class EnemyMananger : MonoBehaviour
     /// 敌人配置组合
     /// </summary>
     public Hashtable EnemyConfig;
+    /// <summary>
+    /// 是否创建敌人
+    /// </summary>
+    public bool IsCreateEnemy = false;
+    /// <summary>
+    /// 出生点计数器,默认为0,最大为2,达到2时,重置为0
+    /// </summary>
+    public int bornNums;
 
     //引用
     /// <summary>
@@ -26,9 +34,10 @@ public class EnemyMananger : MonoBehaviour
     /// </summary>
     public GameObject[] enemyPrefabList;
     /// <summary>
-    /// 出生点
+    /// 敌人出生点List
     /// </summary>
-    public GameObject born;
+    public List<GameObject> bornList;
+
 
     //单例
     public static EnemyMananger instance;
@@ -62,6 +71,24 @@ public class EnemyMananger : MonoBehaviour
     {
         //更新敌人数量文本控件数值
         enemyCountText.text = EnemyCount.ToString();
+
+        if (IsCreateEnemy)
+        {
+            float VecFloat = float.Parse((-17.25 + (bornNums * 13)).ToString());
+
+            GameObject Theitem = Instantiate(bornList[bornNums], new Vector3(VecFloat, 9.5f, 0), Quaternion.identity);
+            Theitem.transform.SetParent(gameObject.transform);
+            
+            bornNums++;
+
+            if (bornNums > 2)
+            {
+                bornNums = 0;
+            }
+
+
+            IsCreateEnemy = false;
+        }
     }
 
     /// <summary>
